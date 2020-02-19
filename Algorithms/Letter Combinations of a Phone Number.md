@@ -34,14 +34,18 @@ var letterCombinations = function(digits) {
   '9': ['w', 'x', 'y', 'z'],
   }
   
+  // For Loop
   let ans = [];
   for(let i = 0; i < digits.length; i++) {
-    ans = helper(ans, digits[i], pMap);
+    ans = helper1(ans, digits[i], pMap);
   }
   return ans;
+  
+  // Recursion
+  return helper2([], 0, digits, pMap);
 };
 
-function helper(res, key, pMap) {
+function helper1(res, key, pMap) {
   const arr = pMap[key];
   let ans = [];
   if(res.length === 0) {
@@ -55,5 +59,25 @@ function helper(res, key, pMap) {
   }
   res = [...ans];
   return res;
+}
+
+// Recursion
+function helper2(res, index, digits, pMap) {
+  
+  if(index == digits.length) return res;
+  const num = digits[index];
+  const arr = pMap[num];
+  let ans = [];
+  if(res.length === 0) {
+    ans = [...arr];
+  } else {
+    res.forEach(prefix => {
+      arr.forEach(c => {
+        ans.push(prefix + c);
+      });
+    });
+  }
+  res = [...ans];
+  return helper2(res, index + 1, digits, pMap);
 }
 ```
