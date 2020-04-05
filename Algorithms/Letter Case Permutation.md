@@ -5,6 +5,9 @@
  * @param {string} S
  * @return {string[]}
  */
+ 
+/*** 1. Brute Solution ***/
+ 
 var letterCasePermutation = function(S) {
   
   if(!isNaN(S)) return [S]; // digit only
@@ -32,4 +35,34 @@ var letterCasePermutation = function(S) {
   
   return [...set];
 };
+
+
+/*** 2. Backtracking ***/
+
+var letterCasePermutation = function(S) {
+    const ans = [];
+    backtrack(S, ans, '', 0);
+    return ans;
+};
+
+function backtrack(S, arr, sb, index) {
+  
+    // Base case - we reached the length of the string S
+    if (index === S.length) {
+        arr.push(sb);
+        return;
+    }
+    const c = S[index];
+    // In the case the current character is an upper alphabet, we want a permutation with a lower alphabet
+    if (c >= 'A' && c <= 'Z') {
+       backtrack(S, arr, sb + c, index + 1);
+    }
+    // In the case the current character is a lower alphabet we want a permutation with an upper alphabet
+    if (c >= 'a' && c <= 'z') {
+        backtrack(S, arr, sb + c.toUpperCase(), index + 1);
+    }
+    // no matter what we proceed with the original permutation
+    backtrack(S, arr, sb + c, index + 1);
+    
+}
 ```
