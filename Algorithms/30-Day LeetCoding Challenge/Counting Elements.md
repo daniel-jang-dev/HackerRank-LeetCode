@@ -1,4 +1,4 @@
-### Day-07 [Counting Elements](https://leetcode.com/explore/challenge/card/30-day-leetcoding-challenge/528/week-1/3289/)
+### Week 1.7. [Counting Elements](https://leetcode.com/explore/challenge/card/30-day-leetcoding-challenge/528/week-1/3289/)
 ```javascript
 /**
  * @param {number[]} arr
