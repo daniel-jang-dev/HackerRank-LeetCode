@@ -4,37 +4,32 @@
  * @param {string} s
  * @return {boolean}
  */
-let ans = false;
-
 var checkValidString = function(s) {
-  backtrack(s, 0);
-  return ans;
-};
+  let leftStack = [];
+  let astStack = [];
 
-function backtrack(s, count) {
-  
-  // Base case
-  if(s == '') {
-    if(count == 0) ans = true;
-    return;
+  for (let i = 0; i < s.length; i++) {
+    const c = s[i];
+    if (c == '(') {
+      leftStack.push(i);
+    } else if (c == ')') {
+      if (leftStack.length > 0)
+        leftStack.pop();
+      else if (astStack.length > 0)
+        astStack.pop();
+      else
+        return false;
+    } else { // '*'
+      astStack.push(i);
+    }
   }
   
-  if(count < 0)
-    return;
-  
-  const c = s[0];
-  const rest = s.substring(1);
-  switch(c) {
-    case '(':
-      backtrack(rest, count + 1);
-      break;
-    case ')':
-      backtrack(rest, count - 1);
-      break;
-    default: // '*'
-      backtrack(rest, count);   // empty string
-      backtrack(rest, count + 1); // '('
-      backtrack(rest, count - 1); // ')'
+  if (leftStack.length > astStack.length)
+    return false;
+  while (leftStack.length > 0) {
+    if (leftStack.pop() > astStack.pop())
+      return false;
   }
-}
+  return true;
+};
 ```
