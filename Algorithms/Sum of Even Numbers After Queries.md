@@ -1,17 +1,23 @@
 ## 985. [Sum of Even Numbers After Queries](https://leetcode.com/problems/sum-of-even-numbers-after-queries/)
 
 ```javascript
-/**
- * @param {number[]} A
- * @param {number[][]} queries
- * @return {number[]}
- */
 var sumEvenAfterQueries = function(A, queries) {
   
-  return queries.map(([d, i]) => {
-    A[i] += d;
-    return A.reduce((a, b) => b % 2 ? a : a + b, 0);
-  });
+  let evenSum = A.reduce((acc, cur) => cur % 2 ? acc : acc + cur, 0);
+  const ans = [];
   
+  queries.forEach(([v, i]) => {
+    if(A[i] % 2 === 0) {
+      evenSum -= A[i];
+    }
+    A[i] += v;
+    if(A[i] % 2 === 0) {
+     evenSum += A[i];
+   }
+    ans.push(evenSum);
+  });
+
+   return ans;
 };
+
 ```
