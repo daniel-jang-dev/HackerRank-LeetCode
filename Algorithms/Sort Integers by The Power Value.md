@@ -6,6 +6,8 @@
  * @param {number} k
  * @return {number}
  */
+
+// # 1.
 var getKth = function(lo, hi, k) {
     
   if(lo == hi) return lo;
@@ -23,6 +25,20 @@ var getKth = function(lo, hi, k) {
   return ans[k-1].value;
 };
 
+// # 2. 
+var getKth = function(lo, hi, k) {
+  const map = {};
+  for(let i = lo; i <= hi; i++) {
+    const power = getPower(i);
+    if(!map[power]) map[power] = [];
+    map[power].push(i);
+  }
+  const arr = [];
+  Object.keys(map).sort((a, b) => a - b).forEach(key => arr.push(...map[key]));
+  return arr[k-1];
+};
+
+// HELPER
 function getPower(num) {
   
   let count = 0;
