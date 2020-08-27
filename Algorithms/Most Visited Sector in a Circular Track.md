@@ -1,5 +1,9 @@
 ## 1560. [Most Visited Sector in a Circular Track](https://leetcode.com/problems/most-visited-sector-in-a-circular-track/)
 
+> Runtime: 84 ms, faster than 91.22% of JavaScript online submissions for Most Visited Sector in a Circular Track.
+>
+> Memory Usage: 39.3 MB, less than 20.27% of JavaScript online submissions for Most Visited Sector in a Circular Track.
+
 ```javascript
 /**
  * @param {number} n
