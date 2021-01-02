@@ -1,6 +1,6 @@
 ## [1704. Determine if String Halves Are Alike](https://leetcode.com/problems/determine-if-string-halves-are-alike/)
-```javascript
-// JAVASCRIPT
+```typescript
+// TYPESCRIPT
 // Runtime: 80 ms, faster than 93.33%
 // Memory Usage: 40.1 MB, less than 86.67%
 
