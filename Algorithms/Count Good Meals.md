@@ -7,18 +7,16 @@ var countPairs = function(deliciousness) {
   
     const m = 10**9 + 7;
     const powers = Array.from({length: 22}, (_, i) => 2**(21 - i) );
-    console.log(powers);
     const history = {};
     let ans = 0;
     for (let i = 0; i < deliciousness.length; i++) {
         const e = deliciousness[i];
         for(let j = 0; j < powers.length; j++) {
             const p = powers[j];
-            if(p < e) 
+            if(p < e)
                 break;
-            if(history[p-e]) {
+            if(history[p-e])
                 ans = (ans + history[p-e]) % m;
-            }
         }
         history[e] = (history[e] || 0) + 1;
     }
